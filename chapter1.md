@@ -1,114 +1,85 @@
----
-title       : Insert the chapter title here
-description : Insert the chapter description here
-attachments :
-  slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
+ Introduction to R Programming
+R language is an open source program maintained by the R core-development team – team of volunteer developers from across the globe. R language used for performing statistical operations and is available from the R-Project website www.r-project.org. R is a command line driven program. The user enters commands at the prompt (> by default) and each command is executed one at a time.
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:5ee0a48b25
-## A really bad movie
+Many routines have been written for R analytics by people all over the world and made freely available from the R project Website as packages. However, the basic installation (for Linux, Windows, or Mac) contains a powerful set of tools for most purposes.
 
-Have a look at the plot that showed up in the viewer to the right. Which type of movie has the worst rating assigned to it?
+R is a consolidated environment for performing statistical operations and generating R data analysis reports in graphical or text formats. R commands entered in the console are evaluated and executed. R cannot handle certain auto-formatting characters such as en-dashes or smart quotes; therefore, you need to be careful while copying and pasting commands into R from other applications.
 
-*** =instructions
-- Adventure
-- Action
-- Animation
-- Comedy
+Features of language R
+It has effective data handling and storage facilities.
+It supports a large pool of operators for performing operations on arrays and matrices.
+It has facilities to print the reports for the analysis performed in the form of graphs either on-screen or on hardcopy.
+You can obtain the installation files for the R program on the official R Website (www.r-project.org). The website has general documentation related to R along with the libraries of routines. The R program can be simply downloaded and installed from the R Website.
 
-*** =hint
-Have a look at the plot. Which color does the point with the lowest rating have?
+Working with R Scripts
+R is utilized as a statistical programming environment for solving problems. R tools can also operate as a general matrix calculation toolbox.
 
-*** =pre_exercise_code
-```{r}
-# The pre exercise code runs code to initialize the user's workspace.
-# You can use it to load packages, initialize datasets and draw a plot in the viewer
+R provides the freedom of selecting and editing tools to interact with the native console. While scripting in R, you don’t need to type commands but rather call functions to achieve results. The RConsole allows command editing.
 
-movies <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/course/introduction_to_r/movies.csv")
+The developed R scripts can be executed in the selected editor. You could download the data and save them in a local file, or just cut and paste the data from the browser to an editor such as Notepad, and then save them. The prominent editors available for R programming language are:
 
-library(ggplot2)
+RGui (R graphical user interface)
+Rstudio – Studio R offers a richer editing environment than RGui and makes some common tasks easier and more fun.
 
-ggplot(movies, aes(x = runtime, y = rating, col = genre)) + geom_point()
-```
+R Graphical User Interface (RGui)
+Once you download R, RGui is provided as the standard graphical user interface (GUI). Most important component of RGui is the R console window. The console window in R is a place where instructions, scripts, and general R operations are performed. The console window also has R tools to manage the R environment. The R console screen appears every time the RGui is opened. It lists some basic information such as the R version installed and the licensing conditions.
 
-*** =sct
-```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
+In the RGui window you can open a new script, go to the ‘File’ menu and select ‘New Script’. The RGui can be accessed using the menu shortcuts created during the installation process.
 
-msg_bad <- "That is not correct!"
-msg_success <- "Exactly! There seems to be a very bad action movie in the dataset."
-test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
-```
+The R prompt, a ‘>’ symbol indicates the place where the user can enter commands. To quit an active R session, you need to type the following code in the console after the command prompt (>):
 
---- type:NormalExercise lang:r xp:100 skills:1 key:3b4c9324a0
-## More movies
+> q()
 
-In the previous exercise, you saw a dataset about movies. In this exercise, we'll have a look at yet another dataset about movies!
+R asks a question to ensure that the user wishes to quit the active session.
 
-A dataset with a selection of movies, `movie_selection`, is available in the workspace.
+Note the parentheses after the q; this is because in R you don’t type commands but rather call functions to achieve results, even quit.
 
-*** =instructions
-- Check out the structure of `movie_selection`.
-- Select movies with a rating of 5 or higher. Assign the result to `good_movies`.
-- Use `plot()` to  plot `good_movies$Run` on the x-axis, `good_movies$Rating` on the y-axis and set `col` to `good_movies$Genre`.
+RStudio
+RStudio is an integrated development environment (IDE) for R language. RStudio is a code editor and development environment, with some nice features that make code development in R easy and fun.
 
-*** =hint
-- Use `str()` for the first instruction.
-- For the second instruction, you should use `...[movie_selection$Rating >= 5, ]`.
-- For the plot, use `plot(x = ..., y = ..., col = ...)`.
+a. Features of RStudio
+Code highlighting that gives different colors to keywords and variables, making it easier to read
+Automatic bracket matching
+Code completion, so as to reduce the effort of typing the commands in full
+Easy access to R Help, with additional features for exploring functions and parameters of functions
+Easy exploration of variables and values. RStudio is available free of charge for Linux, Windows, and Mac devices. It can be directly accessed by clicking the RStudio icon in the menu system on the desktop.
+Because RStudio is available free of charge for Linux, Windows, and Mac devices, it is a good option to use with R. To open RStudio, click the RStudio icon in the menu system or on the desktop.
 
-*** =pre_exercise_code
-```{r}
-# You can also prepare your dataset in a specific way in the pre exercise code
-load(url("https://s3.amazonaws.com/assets.datacamp.com/course/teach/movies.RData"))
-movie_selection <- Movies[Movies$Genre %in% c("action", "animated", "comedy"), c("Genre", "Rating", "Run")]
+b. Components of RStudio
+i. Source
 
-# Clean up the environment
-rm(Movies)
-```
+Top left corner of the screen contains a text editor that lets the user work with source script files. Multiple lines of code can also be entered here. Users can save R script file to disk and perform other tasks on the script.
 
-*** =sample_code
-```{r}
-# movie_selection is available in your workspace
+ii. Console
 
-# Check out the structure of movie_selection
+Bottom left corner is the R console window. The console in RStudio is identical to the console in RGui. All the interactive work of R programming is performed in this window.
 
+iii. Workspace and History
 
-# Select movies that have a rating of 5 or higher: good_movies
+The top right corner is the R workspace and history window. This provides an overview of the workspace, where the variables created in the session along with their values can be inspected. This is also the area where the user can see a history of the commands issued in R.
 
+iv. Files, Plots, Package, and Help
 
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
+The bottom right corner gives access to the following tools:
 
-```
+R Files: This is where the user can browse folders and files on a computer.
 
-*** =solution
-```{r}
-# movie_selection is available in your workspace
+R Plots: This is where R displays the user’s plots.
 
-# Check out the structure of movie_selection
-str(movie_selection)
+R Packages: This is where the user can view a list of all the installed packages
 
-# Select movies that have a rating of 5 or higher: good_movies
-good_movies <- movie_selection[movie_selection$Rating >= 5, ]
+R Help: This is where you can browse the built-in Help system of R
 
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
-plot(good_movies$Run, good_movies$Rating, col = good_movies$Genre)
-```
+R Scripting
+Let us start scripting in R.
 
-*** =sct
-```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
+Let’s create a script to print “Hello world!” in R. To create scripts in R, you need to perform the following steps:
 
-test_function("str", args = "object",
-              not_called_msg = "You didn't call `str()`!",
-              incorrect_msg = "You didn't call `str(object = ...)` with the correct argument, `object`.")
+Here in R, you will have to enclose some commands in print() to get the same output as on the command line. So you need to type below command: This takes “Hello World” as input in R.
 
-test_object("good_movies")
+1
+> print (“Hello world!”)
+We get the output as:
 
-test_function("plot", args = "x")
-test_function("plot", args = "y")
-test_function("plot", args = "col")
-
-test_error()
-
-success_msg("Good work!")
-```
+1
+[1] “Hello world!”
